@@ -1,39 +1,85 @@
 # 🦿 Bipedal Robot Walking Algorithm (20 Steps)
 
-This project implements a **bipedal robot walking algorithm** that simulates human-like walking using **inverse kinematics**. The algorithm calculates joint angles for 20 steps and ensures smooth motion by controlling the **hip and knee joints** while visualizing the foot trajectory.
+## **📌 Introduction**
+This project implements a **bipedal walking algorithm** that simulates human-like movement for a robot using **inverse kinematics and physics principles**. The algorithm calculates joint angles for **hip and knee movements** over **20 steps**, ensuring a smooth, realistic gait.
 
 ---
 
-## 📌 Features
-✅ Simulates **20 walking steps** for a two-legged robot  
-✅ Calculates **hip and knee joint angles** using inverse kinematics  
-✅ Implements **step alternation** to simulate natural walking  
-✅ **Avoids math errors** with built-in range handling  
-✅ Provides **a visual plot of foot movement**  
-✅ **Compatible with Python Spyder & Jupyter Notebook**  
+## **🤖 What is This Algorithm?**
+A **bipedal walking algorithm** is a **set of mathematical rules** that govern how a two-legged robot (like a humanoid) moves its legs to mimic **human walking**. The key components of this algorithm are:
+
+1️⃣ **Trajectory Generation:** Determines how each leg moves through space.  
+2️⃣ **Inverse Kinematics:** Computes joint angles (hip, knee) to achieve the desired movement.  
+3️⃣ **Balance Control:** Ensures the robot remains stable while shifting weight.  
+
+This is achieved using principles from **physics, biomechanics, and robotics**.
 
 ---
 
-## 🛠️ How It Works
-### 1️⃣ Inverse Kinematics Calculation
-- **Hip Angle (θ1)** is determined using `atan2(y, x)`, which gives the **angle of the hip relative to the ground**.
-- **Knee Angle (θ2)** is calculated using the **law of cosines** to determine the bending angle.
+## **⚙️ Relation to Physics**
+The algorithm is deeply rooted in physics concepts, particularly in **mechanics and motion dynamics**:
 
-### 2️⃣ Walking Trajectory
-- The robot **alternates foot movement** with a **fixed step length and height**.
-- Each foot lifts **every alternate step** to simulate natural walking.
+### **1️⃣ Kinematics - Motion Without Forces**
+- The algorithm uses **inverse kinematics** to determine the required **joint angles**.
+- It applies **trigonometry** to compute **hip and knee angles** based on the foot’s position.
+- The **Law of Cosines** is used to calculate the bending of the knee.
 
-### 3️⃣ Motor Command Execution
-- The calculated angles for **hip and knee** are **sent to the robot's motors**.
-- A **delay is added** to simulate real-time movement.
+**Mathematical Equation:**
+\[
+\theta_2 = \cos^{-1} \left(\frac{L^2 - a^2 - b^2}{2ab}\right)
+\]
+Where:
+- \( L \) = Distance from hip to foot
+- \( a, b \) = Lengths of thigh and shin
+- \( \theta_2 \) = Knee angle
+
+### **2️⃣ Dynamics - How Forces Affect Motion**
+- Walking requires shifting the **center of mass (CoM)** to prevent falling.
+- The equation for **balance** follows:
+\[
+ZMP = \frac{\sum (m_i \cdot x_i)}{\sum m_i}
+\]
+Where:
+- \( ZMP \) = Zero Moment Point (balance point)
+- \( m_i \) = Mass of each segment
+- \( x_i \) = Position of each mass
+
+### **3️⃣ Ground Reaction Force (GRF)**
+- The robot must exert enough force against the ground to lift the foot.
+- Newton’s **Third Law of Motion** applies:
+\[
+F_{\text{ground}} = -F_{\text{body}}
+\]
+Where:
+- \( F_{\text{ground}} \) is the reaction force from the ground.
+- \( F_{\text{body}} \) is the weight of the robot.
 
 ---
 
-## 📜 Code Overview
-The full implementation can be found in **walking_algorithm.py**. The main components include:
+## **🛠️ How the Algorithm Works**
+### **1️⃣ Step Planning**
+- The robot lifts one leg **every alternate step**.
+- The step length and height are predefined for balance.
 
-### 🔹 Import Required Libraries
-```python
-import math
-import time
-import matplotlib.pyplot as plt
+### **2️⃣ Angle Calculation**
+- Uses **inverse kinematics** to calculate required hip and knee angles.
+
+### **3️⃣ Motor Commands**
+- Converts angle calculations into signals for actuators.
+
+---
+
+## **🚀 Running the Simulation**
+### **1️⃣ Install Required Libraries**
+```bash
+pip install matplotlib
+
+2️⃣ Run the Python Script
+
+python walking_algorithm.py
+
+Graph Visualization
+
+The foot trajectory is plotted, showing the movement pattern.
+
+
