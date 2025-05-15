@@ -78,20 +78,21 @@ F = 1 \times 9.81 = 9.81\,\text{Newtons}
 ---
 
 ## 6. Selecting the Servo Motors
-It is advisable to choose servo motors with a torque capacity about 20–30% higher than the calculated values to provide a safety margin. Below are some example recommendations:
+### 🔧 Servo Motor Selection Based on Torque Calculations
 
-| Joint                      | Required Torque (N·m) | Recommended Servo      | Approximate Available Torque | Purchase Link                                                                                       |
-|----------------------------|-----------------------|------------------------|------------------------------|-----------------------------------------------------------------------------------------------------|
-|he end of the arm):         | ~2.84                 | JMC 180W AC Servo  | ~3.0 N·m                     | [Purchase on Alibaba](https://www.alibaba.com/product-detail/JMC-180w-AC-servo-motor-60ST-M01330_1600784390045.html) |
-|## 1. Introduction
-Th       | ~1.37                 | MG996R             | ~1.8 N·m                     | [Purchase on Amazon Saudi Arabia](https://www.amazon.sa/dp/B07MFK266B)                              |
-| Arm
+Based on the torque requirements calculated for each joint of the robotic arm, I selected appropriate servo motors that match the needed performance and are readily available in the market.
 
-## 1. Introduct       | ~0.39                 | MG90S              | ~0.4 N·m                     | [Purchase on Jeem3](https://jeem3.com/nDEWBb)                                                        |
+| Joint | Required Torque (N·m) | Recommended Servo | Torque Provided | Product Link |
+|-------|------------------------|-------------------|------------------|--------------|
+| 1     | 1.47                   | MG996R or DS3218  | 1.5 – 2.0 N·m    | [MG996R on Amazon](https://www.amazon.sa/dp/B07L6FJGR4) / [DS3218 on Amazon](https://www.amazon.sa/dp/B07ZK69FQD) |
+| 2     | 0.98                   | MG995             | 1.27 N·m         | [MG995 on Amazon](https://www.amazon.sa/dp/B07FTK5ZFL) |
+| 3     | 0.39                   | MG995             | 1.27 N·m         | [MG995 on Amazon](https://www.amazon.sa/dp/B07FTK5ZFL) |
 
->m
+These motors were selected after comparing datasheet torque ratings with the calculated torque for each segment (τ₁ = 1.4715 N·m, τ₂ = 0.981 N·m, τ₃ = 0.3924 N·m).  
+Each servo supports operation between 4.8V to 7.2V and has metal gears for higher mechanical durability.
 
-## 1. IntroduEnsure that the voltage and current specifications of each servo match your controller requirements and that the mechanical dimensions are suitable for your design.
+> ⚡ Estimated power consumption per motor: 3V × 70mA = **0.21 W**  
+> ⚙️ These servos are compatible with common Arduino setups and provide sufficient torque margins.
 
 ---
 
